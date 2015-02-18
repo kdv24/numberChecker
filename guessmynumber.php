@@ -1,11 +1,15 @@
 <?php
-  $guess = $_GET[user_guess];
+  $guess = $_GET["user_guess"];
   $favorite_number = rand(1,20);
   $message = checkGuess($guess, $favorite_number);
 
   function checkGuess($guessed_number, $winning_number)
     {
-      if ($guessed_number == $winning_number) {
+      if ($guessed_number < 1 || $guessed_number > 20) {
+        return "That's not between 1 and 20!";
+      }
+
+      elseif ($guessed_number == $winning_number) {
         return "Way to go! You guessed it!";
       }
       elseif ($guessed_number < $winning_number) {
@@ -15,8 +19,6 @@
         return "Your number is too high this time.  You lose.";
       }
     }
-
-
 
 ?>
 
@@ -36,3 +38,10 @@
   </div>
 </body>
 </html>
+
+
+
+
+
+
+
